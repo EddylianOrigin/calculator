@@ -1,14 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './layout.css'
+import Output from './output';
 
 const Layout = (props) => {
-    const handleClick = () => { };
+    let [input, setInput] = useState('')
+    let [result, setResult] = useState('0')
+    const handleClick = (event) => {
+        const value = event.target.value;
+        if (value === '=') {
+            if (input !== '') {
+                let res = ''
+                try {
+                    res = eval(input)
+                } catch (err) {
+                    setResult('Math error')
+                }
+                if (res === undefined) {
+                    setResult('Math error')
+                }
+                else {
+                    setResult(input + '=')
+                    setInput(res)
+                }
+            }
+        }
+        else if (value === 'C') {
+            setInput('')
+            setResult('0')
+        }
+        else if (value === 'DEL') {
+            let str = input
+            str = str.substr(0, str.length - 1)
+            setInput(str)
+        }
+
+        else {
+            setInput((input += value))
+        }
+
+    };
     return (
         <div className='frame'>
             <div className='calculator'>
-                <h1>MINI-CALCULATOR</h1>
+                <h2>MINI-CALCULATOR</h2>
                 <br></br>
-                <img />
+                <Output user={input} answer={result} />
+                <h6 className='calculator-logo'>by EDDYLIAN</h6>
                 <div className='keys'>
                     <input type='button' value={'C'} className='button clear' onClick={handleClick}></input>
                     <input type='button' value={'DEL'} className='button clear' onClick={handleClick}></input>

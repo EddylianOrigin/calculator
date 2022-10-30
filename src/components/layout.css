@@ -1,6 +1,6 @@
 .calculator {
-    border: 1px solid #cccccc;
-    box-shadow: 10px 10px 10px 30px 0px rgba(0, 0, 0, 0.75);
+    border: 6px solid #cccccc;
+    box-shadow: 5px 5px 5px rgba(104, 98, 98, 0.75);
     border-radius: 20px;
     position: absolute;
     top: 50%;
@@ -8,21 +8,46 @@
     transform: translate(-50%, -50%);
     width: 400px;
     height: 560px;
+    background-color: skyblue;
+    display: grid;
+}
+
+.calculator-logo {
+    height: 3.5vmin;
+    pointer-events: none;
+
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .calculator-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+@keyframes calculator-logo {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .keys {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
+    grid-gap: 2px;
     padding: 10px;
     margin: auto;
 }
 
 .button {
-    height: 60px;
+    height: 3.8rem;
+    width: 5.5rem;
     padding: 5px;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 18px;
     border: 1px solid #c4c4c4;
     background-color: transparent;
     font-size: 2rem;
@@ -55,6 +80,9 @@
     background-color: #25a8e0;
     border-color: #25a8e0;
     color: #fff;
+    border-radius: 18px;
+    height: 4rem;
+    width: 5rem;
 }
 
 .equal-sign:hover {
